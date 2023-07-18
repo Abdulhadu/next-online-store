@@ -1,9 +1,9 @@
 // base URl for all api calls
-const baseURL = `https://versalvox.vercel.app`;
+const baseURl = `https://versalvox.vercel.app`;
 // getting all users data
 export const getUserData = async () => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/user`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/user`, {
       method: "GET",
     });
     const data = await res.json();
@@ -34,7 +34,7 @@ export const add_Category = async (category) => {
 // getting all categories data
 export const getCategoriesData = async () => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/category`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/category`, {
       method: "GET",
     });
     const data = await res.json();
@@ -47,7 +47,7 @@ export const getCategoriesData = async () => {
 // deleting  Category
 export const deleteCategory = async (id) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/category?id=${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/category?id=${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
@@ -60,7 +60,7 @@ export const deleteCategory = async (id) => {
 // getting Category by id
 export const getCategoryById = async (id) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/getCategoryById?id=${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/getCategoryById?id=${id}`, {
       method: "GET",
     });
     const data = await res.json();
@@ -74,7 +74,7 @@ export const getCategoryById = async (id) => {
 export const update_Category = async (category) => {
   console.log(" i got call");
   try {
-    const res = await fetch(`${baseURl}/api/admin/category`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/category`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export const add_products = async (product) => {
 // getting all products data
 export const getProductsData = async () => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/product`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/product`, {
       method: "GET",
     });
     const data = await res.json();
@@ -127,7 +127,7 @@ export const getProductsData = async () => {
 
 export const delete_Product = async (id) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/product?id=${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/product?id=${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
@@ -140,7 +140,7 @@ export const delete_Product = async (id) => {
 // getting Category by id
 export const getProductByID = async (id) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/getProductByID?id=${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/getProductByID?id=${id}`, {
       method: "GET",
     });
     const data = await res.json();
@@ -153,7 +153,7 @@ export const getProductByID = async (id) => {
 // updating Category
 export const update_product = async (product) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/product`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/product`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -189,7 +189,7 @@ export const get_Product_By_Category = async (id) => {
 // getting all Orders
 export const getOrdersData = async () => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/order`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/order`, {
       method: "GET",
     });
     const data = await res.json();
@@ -216,7 +216,7 @@ export const getOrdersData = async () => {
 // getting all Admin data
 export const getAdminData = async () => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/adminUser`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/adminUser`, {
       method: "GET",
     });
     const data = await res.json();
@@ -229,7 +229,7 @@ export const getAdminData = async () => {
 // Delete the Admin data
 export const deleteAdmin = async (id) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/adminUser?id=${id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/adminUser?id=${id}`, {
       method: "DELETE",
     });
     const data = await res.json();
