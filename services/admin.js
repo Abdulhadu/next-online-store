@@ -1,6 +1,5 @@
 // base URl for all api calls
-const baseURl = `http://localhost:3000`;
-
+const baseURL = `https://versalvox.vercel.app`;
 // getting all users data
 export const getUserData = async () => {
   try {
