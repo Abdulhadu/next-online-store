@@ -39,6 +39,12 @@ export async function getStaticProps({ params }) {
 
 export async function getStaticPaths() {
   const product = await getProductsData();
+  if (!product) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
 
   return {
     paths: product.map((prod) => {

@@ -1,6 +1,6 @@
 import React from "react";
-import { BsFilePlus } from "react-icons/Bs";
-import { BsFileMinus } from "react-icons/Bs";
+import { BsFilePlus } from "react-icons/bs";
+import { BsFileMinus } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
 import {useState, useEffect} from "react";
 import OrderConfirmationModal from "./OrderConfirmationModal";

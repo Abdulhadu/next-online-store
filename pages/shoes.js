@@ -23,31 +23,72 @@ const shoes = ({ products }) => {
             <div className="flex flex-wrap -m-4 ">
               {products.map((item) => {
                 return (
-                  <Link
+                  <div
                     key={item._id}
-                    passHref={true}
-                    href={`/product/${item.Slug}`}
+                    className="lg:w-1/5 h-1/5 md:w-1/2 p-4 w-full shadow-lg hover:shadow-2xl mx-6 my-6 border-2"
                   >
-                    <div className="lg:w-1/5 h-1/5 md:w-1/2 p-4 w-full shadow-lg hover:shadow-2xl mx-6 my-6 ">
-                      <a className="block relative h-50 px-4 py-4 rounded overflow-hidden ">
+                    <Link
+                      passHref={true}
+                      legacyBehavior
+                      href={`/product/${products[item].Slug}`}
+                    >
+                      <a className="block relative h-50 px-4 py-4 rounded overflow-hidden">
                         <img
                           alt="ecommerce"
                           className="object-cover object-center w-full h-full block"
-                          src={item.img}
+                          src={products[item].img}
                         />
+
+                        <div className="mt-4">
+                          <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
+                            {products[item].Category}
+                          </h3>
+                          <h2 className="text-gray-900 title-font text-lg font-medium">
+                            {products[item].title}
+                          </h2>
+                          <p className="mt-1 font-bold">
+                            ${products[item].price}
+                          </p>
+                          <div className="mt-1">
+                            {products[item].Size.includes("SM") && (
+                              <span className="border-2 mx-0.5 px-1.5">SM</span>
+                            )}
+                            {products[item].Size.includes("M") && (
+                              <span className="border-2 mx-0.5 px-1.5">M</span>
+                            )}
+                            {products[item].Size.includes("L") && (
+                              <span className="border-2 mx-0.5 px-1.5">L</span>
+                            )}
+                            {products[item].Size.includes("XL") && (
+                              <span className="border-2 mx-0.5 px-1.5">XL</span>
+                            )}
+                            {products[item].Size.includes("XXL") && (
+                              <span className="border-2 mx-0.5 px-1.5">
+                                XXL
+                              </span>
+                            )}
+                          </div>
+                          <div className="mt-1">
+                            {products[item].Color.includes("white") && (
+                              <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
+                            )}
+                            {products[item].Color.includes("black") && (
+                              <button className="border-2 border-gray-300 ml-1 bg-gray-800 rounded-full w-6 h-6 focus:outline-none"></button>
+                            )}
+                            {products[item].Color.includes("green") && (
+                              <button className="border-2 border-gray-300 ml-1 bg-green-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                            )}
+                            {products[item].Color.includes("yellow") && (
+                              <button className="border-2 border-gray-300 ml-1 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                            )}
+                            {products[item].Color.includes("red") && (
+                              <button className="border-2 border-gray-300 ml-1 bg-red-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                            )}
+                          </div>
+                        </div>
                       </a>
-                      <div className="mt-4">
-                        <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">
-                          {item.Category}
-                        </h3>
-                        <h2 className="text-gray-900 title-font text-lg font-medium">
-                          {item.title}
-                        </h2>
-                        <p className="mt-1 font-bold">{item.price}</p>
-                        <p className="mt-1">XL,L,M,SM</p>
-                      </div>
-                    </div>
-                  </Link>
+                    </Link>
+                  </div>
                 );
               })}
             </div>

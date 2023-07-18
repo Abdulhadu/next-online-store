@@ -31,8 +31,14 @@ export async function getStaticProps({ params }) {
 }
 
 export async function getStaticPaths() {
-  const category = await getCategoriesData();
+  const category = (await getCategoriesData());
 
+  if (!category) {
+    return {
+      paths: [],
+      fallback: false,
+    };
+  }
   return {
     paths: category.map((cate) => {
       return {
@@ -63,7 +69,7 @@ export default function updateCategory({ CategoryData }) {
     const res = await update_Category(cateData);
     if (res.msg) {
       toast.success(res.msg);
-      Router.push("/admin/viewCategory.js");
+      Router.push("/admin/viewCategory");
     } else {
       toast.error(res.error);
     }
@@ -72,6 +78,7 @@ export default function updateCategory({ CategoryData }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setCateData({ ...cateData, image: imageData }, updateNow());
+    
   };
 
   return (
@@ -156,15 +163,6 @@ export default function updateCategory({ CategoryData }) {
                     rows={4}
                     defaultValue="Describe the Category"
                   />
-                  <FileBase
-                    type="file"
-                    name="image"
-                    accept="image/jpeg"
-                    value={cateData.name}
-                    onChange={handleInputChange}
-                    required
-                  />
-
                   <FormGroup>
                     <FormControlLabel
                       control={<Checkbox defaultChecked />}

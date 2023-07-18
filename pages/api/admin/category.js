@@ -92,7 +92,7 @@ const getCategory = async (req, res) => {
     try
     {
         const categories = await Category.find({});
-        return res.status(200).json({categories});
+        return res.status(201).send({categories});
     }
     catch(error)
     {

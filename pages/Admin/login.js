@@ -154,9 +154,9 @@ const User = () => {
               <Grid container justifyContent="flex-end">
                 <Grid item>
                   <Link href="#" variant="body2">
-                  <a> 
+                
                     Dont have Account? Contact Admin to Register
-                    </a>
+                   
                   </Link>
                 </Grid>
               </Grid>

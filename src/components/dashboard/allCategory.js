@@ -148,7 +148,7 @@ const allCategory = ({ data }) => {
                     <TableCell align="right">
                       <Link
                         href={`updateCategory/${category._id}`}
-                        className="bg-orange-500 mx-2 hover:bg-orange-900 text-white font-bold py-2 px-4 rounded-full"
+                        className="bg-orange-500 mx-2 hover:bg-orange-900 text-black font-bold py-2 px-4 rounded-full"
                       >
                         Update
                       </Link>

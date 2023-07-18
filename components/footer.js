@@ -70,7 +70,7 @@ const footer = () => {
                 <li>
                   <a className="text-gray-600 font-normal hover:text-purple-800">
                     Term & Conditions
-                  </a>assName=
+                  </a>
                 </li>
               </nav>
             </div>
