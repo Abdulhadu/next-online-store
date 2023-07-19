@@ -20,7 +20,7 @@
     "feather-icons-react": "^0.5.0",
     "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^3.1.2",
-    "mongoose": "^6.5.0",
+    "mongoose": "^6.11.4",
     "mongose": "^0.0.2-security",
     "next": "^13.4.10",
     "prop-types": "15.7.2",
