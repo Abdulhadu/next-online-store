@@ -1,5 +1,5 @@
-// base URl for all api calls
-const baseURl = `https://versalvox.vercel.app`;
+
+
 // getting all users data
 export const getUserData = async () => {
   try {
@@ -16,7 +16,7 @@ export const getUserData = async () => {
 // Adding Category
 export const add_Category = async (category) => {
   try {
-    const res = await fetch(`${baseURl}/api/admin/category`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/category`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export const update_Category = async (category) => {
 export const add_products = async (product) => {
   try {
     console.log("products are: ", product);
-    const res = await fetch(`${baseURl}/api/admin/product`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/product`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -172,7 +172,7 @@ export const update_product = async (product) => {
 export const get_Product_By_Category = async (id) => {
   try {
     const res = await fetch(
-      `${baseURl}/api/frontend/getProductByCategory?id=${id}`,
+      `${process.env.NEXT_PUBLIC_HOST}/api/frontend/getProductByCategory?id=${id}`,
       {
         method: "GET",
       }
