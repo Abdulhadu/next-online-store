@@ -56,7 +56,7 @@ const checkout = ({ cart, addtoCart, clearCart, removeQty, subTotal }) => {
 console.log("data is : ",data);
     try {
       // Make an API call to submit the form data
-      const response = await fetch("/api/orders", {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/orders`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

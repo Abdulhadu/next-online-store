@@ -42,7 +42,7 @@ const register = () => {
     const finalData = { username, email, password };
     console.log("final data is: ", finalData);
     try {
-      let res = await fetch(`/api/admin/register_user`, {
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/register_user`, {
         method: "POST", // or 'PUT'
         headers: {
           "Content-Type": "application/json",

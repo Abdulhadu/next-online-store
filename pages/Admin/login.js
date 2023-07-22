@@ -33,7 +33,7 @@ const User = () => {
     const data = { username, password };
     // console.log("data is : ", data);
 
-    let res = await fetch(`/api/admin/login_user`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/admin/login_user`, {
       method: "POST", // or 'PUT'
       headers: {
         "Content-Type": "application/json",
