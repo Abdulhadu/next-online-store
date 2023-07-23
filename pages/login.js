@@ -58,7 +58,7 @@ const login = () => {
   };
   return (
     <>
-      <div className=" m-auto px-40">
+      <div className=" m-auto px-5 sm:px-40">
         <ToastContainer
           position="top-center"
           autoClose={5000}

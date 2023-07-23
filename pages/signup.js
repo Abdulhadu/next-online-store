@@ -1,14 +1,13 @@
-
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const signup = () => {
-  const [firstname, setfirstname] = useState('');
-  const [lastname, setlastname] = useState('');
-  const [email, setemail] = useState('');
-  const [password, setpassword] = useState('');
+  const [firstname, setfirstname] = useState("");
+  const [lastname, setlastname] = useState("");
+  const [email, setemail] = useState("");
+  const [password, setpassword] = useState("");
   const router = useRouter();
   useEffect(() => {
     if (localStorage.getItem("token")) {
@@ -61,7 +60,7 @@ const signup = () => {
       <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
       <div className="h-10"></div>
       <div className="min-w-screen min-h-screen bg-white flex items-center justify-center px-5 py-5">
-        <div className="bg-purple-100 text-gray-500 rounded-3xl shadow-xl w-full mx-40 overflow-hidden">
+        <div className="bg-purple-100 text-gray-500 rounded-2xl shadow-xl w-full sm:mx-40 overflow-hidden">
           <div className="md:flex w-full">
             <div className="hidden md:block w-1/2 bg-purple-500 py-10 px-10">
               <svg
@@ -268,7 +267,7 @@ const signup = () => {
                 />
               </svg>
             </div>
-            <div className="w-full md:w-1/2 py-10 px-5 md:px-10">
+            <div className="w-full sm:w-full md:w-1/2 py-10 px-5 md:px-10">
               <div className="text-center mb-10">
                 <h1 className="font-bold text-3xl text-gray-900">REGISTER</h1>
                 <p>Enter your information to register</p>
@@ -321,7 +320,10 @@ const signup = () => {
                   </div>
                   <div className="flex -mx-3">
                     <div className="w-full px-3 mb-5">
-                      <label htmlFor="email" className="text-xs font-semibold px-1">
+                      <label
+                        htmlFor="email"
+                        className="text-xs font-semibold px-1"
+                      >
                         Email
                       </label>
                       <div className="flex">
@@ -382,7 +384,8 @@ const signup = () => {
             title="Buy me a beer"
             href="https://www.buymeacoffee.com/scottwindon"
             target="_blank"
-            className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12" rel="noreferrer"
+            className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
+            rel="noreferrer"
           >
             <img
               className="object-cover object-center w-full h-full rounded-full"
