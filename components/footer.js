@@ -13,18 +13,15 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">T-Shirts</a>
+                  <a href="/tshirt" className="text-gray-600 hover:text-purple-800">T-Shirts</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">Shoes</a>
+                  <a href="/shoes" className="text-gray-600 hover:text-purple-800">Shoes</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">
+                  <a href="/menStyle" className="text-gray-600 hover:text-purple-800">
                     Men Accessories
                   </a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-purple-800">Blogs</a>
                 </li>
               </nav>
             </div>
@@ -34,16 +31,13 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">Login</a>
+                  <a href="/login" className="text-gray-600 hover:text-purple-800">Login</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">Sign-Up</a>
+                  <a href="/signup" className="text-gray-600 hover:text-purple-800">Sign-Up</a>
                 </li>
                 <li>
-                  <a className="text-gray-600 hover:text-purple-800">View Cart</a>
-                </li>
-                <li>
-                  <a className="text-gray-600 hover:text-purple-800">Dashboard</a>
+                  <a href="/orders" className="text-gray-600 hover:text-purple-800">Dashboard</a>
                 </li>
               </nav>
             </div>
@@ -53,22 +47,22 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
                     About us
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
                     Customer Services
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-600 font-normal hover:text-purple-800">
-                    Return
+                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
+                    Contact us
                   </a>
                 </li>
                 <li>
-                  <a className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
                     Term & Conditions
                   </a>
                 </li>
@@ -84,7 +78,7 @@ const footer = () => {
                     htmlFor="footer-field"
                     className="leading-7 text-sm text-gray-600"
                   >
-                    Placeholder
+                    Enter your Email Address
                   </label>
                   <input
                     type="text"
@@ -98,7 +92,7 @@ const footer = () => {
                 </button>
               </div>
               <p className="text-gray-500 text-sm mt-2 md:text-left text-center">
-                Bitters chicharrones fanny pack
+                Subscribe Our News letter to get the most recent updates about Products
               </p>
             </div>
           </div>
@@ -110,14 +104,14 @@ const footer = () => {
             </a>
 
             <p className="text-sm text-gray-500 sm:ml-6 sm:mt-0 mt-4">
-              © 2020 Tailblocks —
+              © 2023 — Versalvox
               <a
                 href="https://twitter.com/knyttneve"
                 rel="noopener noreferrer"
                 className="text-gray-600 ml-1"
                 target="_blank"
               >
-                @knyttneve
+                @Abdul-Haadi
               </a>
             </p>
             <span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
