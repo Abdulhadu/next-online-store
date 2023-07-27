@@ -41,7 +41,6 @@ const Post = ({ buyNow, addtoCart, Variants, products }) => {
   const onchangePin = (e) => {
     setpin(e.target.value);
   };
-  
 
   const refreshVariants = (newsize, newcolor) => {
     let url = `${process.env.NEXT_PUBLIC_HOST}/product/${Variants[newcolor][newsize]["Slug"]}`;
@@ -68,14 +67,14 @@ const Post = ({ buyNow, addtoCart, Variants, products }) => {
           <div className="lg:w-4/5 mx-auto flex flex-wrap">
             <img
               alt="ecommerce"
-              className="lg:w-1/4 lg:h-auto object-cover object-center rounded"
+              className="w-1/2 m-auto sm:w-1/4 lg:w-1/4 lg:h-auto object-cover object-center rounded"
               src={products.img}
             />
             <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
               <h2 className="text-sm title-font text-gray-500 tracking-widest">
                 {products.Category}
               </h2>
-              <h1 className="text-gray-900 text-3xl title-font font-semibold mb-1">
+              <h1 className="text-gray-900 text-xl sm:text-2xl lg:text-3xl title-font font-semibold mb-1">
                 {products.title} | ({products.Size}/{products.Color})
               </h1>
               <div className="flex mb-4">
@@ -176,7 +175,9 @@ const Post = ({ buyNow, addtoCart, Variants, products }) => {
                   </a>
                 </span>
               </div>
-              <p className="leading-relaxed">{products.Desc}</p>
+              <p className="text-sm sm:text-lg leading-relaxed">
+                {products.Desc}
+              </p>
               <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                 <div className="flex">
                   <span className="mr-3">Color</span>
@@ -280,54 +281,56 @@ const Post = ({ buyNow, addtoCart, Variants, products }) => {
                   </div>
                 </div>
               </div>
-              <div className="flex">
-                <span className="title-font font-bold text-2xl text-gray-900">
+              <div className="flex-col sm:flex-row lg:flex-row">
+                <span className="title-font font-bold text-xl sm:text-2xl text-gray-900">
                   ${products.price}
                 </span>
-                <button
-                  onClick={() => {
-                    buyNow(
-                      slug,
-                      products.img,
-                      1,
-                      products.title,
-                      Size,
-                      products.price,
-                      Color
-                    );
-                  }}
-                  className="flex ml-auto rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600"
-                >
-                  Order Now
-                </button>
-                <button
-                  onClick={() => {
-                    addtoCart(
-                      slug,
-                      products.img,
-                      1,
-                      products.title,
-                      Size,
-                      products.price,
-                      Color
-                    );
-                  }}
-                  className="flex mx-4 rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600"
-                >
-                  Add To Cart
-                </button>
-                <button className=" w-10 h-10 rounded-full bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                  <svg
-                    fill="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    className="w-5 h-5"
-                    viewBox="0 0 24 24"
+                <div className="flex">
+                  <button
+                    onClick={() => {
+                      buyNow(
+                        slug,
+                        products.img,
+                        1,
+                        products.title,
+                        Size,
+                        products.price,
+                        Color
+                      );
+                    }}
+                    className="text-sm sm:text-lg flex mt-2 sm:ml-4 rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-3 sm:py-2 sm:px-6 focus:outline-none hover:bg-indigo-600"
                   >
-                    <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
-                  </svg>
-                </button>
+                    Order Now
+                  </button>
+                  <button
+                    onClick={() => {
+                      addtoCart(
+                        slug,
+                        products.img,
+                        1,
+                        products.title,
+                        Size,
+                        products.price,
+                        Color
+                      );
+                    }}
+                    className="text-sm sm:text-lg flex mt-2 ml-1 sm:ml-4 rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-3 sm:py-2 sm:px-6 focus:outline-none hover:bg-indigo-600"
+                  >
+                    Add To Cart
+                  </button>
+                  <button className=" w-10 h-10 rounded-full bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
+                    <svg
+                      fill="currentColor"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      className="w-5 h-5"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
+                    </svg>
+                  </button>
+                </div>
               </div>
               <hr className="my-4 "></hr>
               <div className="flex-row my-2">
@@ -340,7 +343,7 @@ const Post = ({ buyNow, addtoCart, Variants, products }) => {
                 />
                 <button
                   onClick={serviceability}
-                  className="flex-row ml-5 rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600"
+                  className="flex-row ml-5 rounded-lg font-semibold text-white bg-purple-800 border-0 py-2 px-3.5 sm:py-2 sm:px-6 focus:outline-none hover:bg-indigo-600"
                 >
                   Check
                 </button>
@@ -375,7 +378,6 @@ Post.propTypes = {
   Variants: PropTypes.object.isRequired,
   products: PropTypes.object.isRequired,
 };
-
 
 export async function getServerSideProps(context) {
   if (!mongoose.connections[0].readyState) {

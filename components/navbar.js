@@ -29,8 +29,8 @@ const navbar = ({
   const ref = useRef();
 
   return (
-    <header className="container sticky top-0 z-40 text-gray-600 body-font ">
-      <div className="!overflow-x-hidden sm:overflow-x-hidden">
+    <header className="overflow-x-hidden container sticky top-0 z-40 text-gray-600 body-font ">
+      <div className="overflow-x-hidden sm:overflow-x-hidden">
         <nav className="bg-white border-gray-200">
           <div className="flex z-40 flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
             <div className="w-40 mt-5 sm:mt-0 sm:w-60">
