@@ -13,13 +13,13 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a href="/tshirt" className="text-gray-600 hover:text-purple-800">T-Shirts</a>
+                  <a href="/tshirt" className="cursor-pointer text-gray-600 hover:text-purple-800">T-Shirts</a>
                 </li>
                 <li>
-                  <a href="/shoes" className="text-gray-600 hover:text-purple-800">Shoes</a>
+                  <a href="/shoes" className="cursor-pointer text-gray-600 hover:text-purple-800">Shoes</a>
                 </li>
                 <li>
-                  <a href="/menStyle" className="text-gray-600 hover:text-purple-800">
+                  <a href="/menStyle" className="cursor-pointer text-gray-600 hover:text-purple-800">
                     Men Accessories
                   </a>
                 </li>
@@ -31,13 +31,13 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a href="/login" className="text-gray-600 hover:text-purple-800">Login</a>
+                  <a href="/login" className="cursor-pointer text-gray-600 hover:text-purple-800">Login</a>
                 </li>
                 <li>
-                  <a href="/signup" className="text-gray-600 hover:text-purple-800">Sign-Up</a>
+                  <a href="/signup" className="cursor-pointer text-gray-600 hover:text-purple-800">Sign-Up</a>
                 </li>
                 <li>
-                  <a href="/orders" className="text-gray-600 hover:text-purple-800">Dashboard</a>
+                  <a href="/orders" className="cursor-pointer text-gray-600 hover:text-purple-800">Dashboard</a>
                 </li>
               </nav>
             </div>
@@ -47,22 +47,22 @@ const footer = () => {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="cursor-pointer text-gray-600 font-normal hover:text-purple-800">
                     About us
                   </a>
                 </li>
                 <li>
-                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="text-gray-600 font-normal cursor-pointer hover:text-purple-800">
                     Customer Services
                   </a>
                 </li>
                 <li>
-                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="cursor-pointer text-gray-600 font-normal hover:text-purple-800">
                     Contact us
                   </a>
                 </li>
                 <li>
-                  <a href="/contact" className="text-gray-600 font-normal hover:text-purple-800">
+                  <a href="/contact" className="cursor-pointer text-gray-600 font-normal hover:text-purple-800">
                     Term & Conditions
                   </a>
                 </li>
@@ -76,7 +76,7 @@ const footer = () => {
                 <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
                   <label
                     htmlFor="footer-field"
-                    className="leading-7 text-sm text-gray-600"
+                    className="leading-7 text-sm  text-gray-600"
                   >
                     Enter your Email Address
                   </label>

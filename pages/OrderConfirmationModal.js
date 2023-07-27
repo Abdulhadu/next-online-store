@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const OrderConfirmationModal = ({ onClose }) => {
+const OrderConfirmationModal = () => {
   return (
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="p-1 rounded shadow-lg bg-gradient-to-r from-purple-500 via-green-500 to-blue-500">
@@ -42,9 +42,12 @@ const OrderConfirmationModal = ({ onClose }) => {
                 d="M7 16l-4-4m0 0l4-4m-4 4h18"
               />
             </svg>
-            <button onClick={onClose}>
+            {/* <button onClick={onClose}>
+              <span className="text-sm font-medium">Close</span>
+            </button> */}
+            <a href="/">
               <span className="text-sm font-medium">Continue Shopping</span>
-            </button>
+            </a>
           </a>
         </div>
       </div>

@@ -211,6 +211,45 @@ export const getOrdersData = async () => {
   }
 };
 
+
+export const getOrderById = async (username) => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getOrderById?userId=${username}`, {
+      method: "GET",
+    });
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.log("error in getting specific Order (services) => " + error);
+  }
+};
+
+
+// Update the order Status
+export const updateOrderStatus = (orderId) => {
+  const updatedStatus = "Shipped"; // Replace with the new status
+
+  fetch(`/api/order/${orderId}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ status: updatedStatus }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.error("Order updated success:", data);
+    })
+    .catch((error) => {
+      console.error("Error updating order status:", error);
+    });
+};
+
+
+
+
+
+
 //   ---------------------------admin--------------------------------
 
 // getting all Admin data

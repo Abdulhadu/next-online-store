@@ -29,11 +29,11 @@ const navbar = ({
   const ref = useRef();
 
   return (
-    <header className="container sticky top-0 z-50 text-gray-600 body-font ">
+    <header className="container sticky top-0 z-40 text-gray-600 body-font ">
       <div className="!overflow-x-hidden sm:overflow-x-hidden">
         <nav className="bg-white border-gray-200">
-          <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
-            <div className="w-36 sm:w-60">
+          <div className="flex z-40 flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
+            <div className="w-40 mt-5 sm:mt-0 sm:w-60">
               <Image src="/Logo.png" height={70} width={250} />
             </div>
             <div className="flex items-center">
@@ -51,7 +51,7 @@ const navbar = ({
                 </button>
               )}
 
-              <div className="relative inline-block text-left">
+              <div className="z-10 relative inline-block text-left">
                 <span
                   onMouseOver={() => {
                     setdropdown(true);
@@ -59,7 +59,7 @@ const navbar = ({
                   onMouseLeave={() => {
                     setdropdown(false);
                   }}
-                  className="py-2 bg-white text-sr:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                  className="py-2 z-40 bg-white text-sr:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                   id="menu-button"
                   aria-expanded="true"
                   aria-haspopup="true"
@@ -72,13 +72,13 @@ const navbar = ({
                       onMouseLeave={() => {
                         setdropdown(false);
                       }}
-                      className=" origin-top-right top-10 absolute right-5  w-56 rounded-md shadow-lg bg-purple-100 ring-1 ring-black ring-opacity-5 focus:outline-none"
+                      className=" origin-top-right top-10 absolute right-5 w-56 rounded-md shadow-lg bg-purple-100 ring-1 ring-black ring-opacity-5 focus:outline-none"
                       role="menu"
                       aria-orientation="vertical"
                       aria-labelledby="menu-button"
                       tabIndex="-1"
                     >
-                      <div className="" role="none">
+                      <div className="z-50" role="none">
                         <ul>
                           <li>
                             {" "}
@@ -135,7 +135,7 @@ const navbar = ({
 
                   {user.value && (
                     <RiAccountCircleFill
-                      className="cursor-pointer mx-3"
+                      className="cursor-pointer mt-5 sm:mt-0 mx-3 "
                       size={45}
                     />
                   )}
@@ -151,8 +151,8 @@ const navbar = ({
             </div>
           </div>
         </nav>
-        <nav className="bg-gray-50">
-          <div className="max-w-screen-xl px-4 py-3 mx-auto">
+        <nav className="bg-gray-100">
+          <div className=" max-w-screen-xl px-4 py-3 mx-auto">
             <div className="flex items-center">
               <ul className="flex flex-row text-center font-medium mt-0 mr-6 space-x-8 text-sm">
                 <li>
@@ -187,7 +187,7 @@ const navbar = ({
             </div>
           </div>
         </nav>
-        
+
         {/* Shopping Cart  */}
         <div
           ref={ref}

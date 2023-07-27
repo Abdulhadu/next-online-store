@@ -7,10 +7,13 @@ import {
   TableHead,
   TableRow,
   Chip,
+  // Link,
 } from "@mui/material";
 import BaseCard from "../baseCard/BaseCard";
+
+import { NoSsr } from "@mui/material"; //It will Prevet the Hydration Error
 import React, { useEffect, useState } from "react";
-import { getOrdersData } from "../../../services/admin";
+import { getOrdersData, updateOrderStatus } from "../../../services/admin";
 
 export async function getStaticProps() {
   const data = (await getOrdersData()) || [];
@@ -21,8 +24,6 @@ export async function getStaticProps() {
 }
 
 const allOrder = ({ data }) => {
-  const [finalOrder, setFinalOrder] = useState(data);
-
   useEffect(() => {
     const intervalId = setInterval(() => {
       // Fetch the updated data from the server
@@ -38,12 +39,25 @@ const allOrder = ({ data }) => {
       });
     }, 3000);
 
+    
     return () => {
       clearInterval(intervalId);
     };
+    
   }, []);
+  
+  const [finalOrder, setFinalOrder] = useState(data);
+  
+  const handleReadyToShipClick = (orderId) => {
+    // Pass both orderId and status to the updateOrderStatus function
+    updateOrderStatus(orderId, "Shipped").then((updatedData) => {
+      // Update the finalOrder state with the updated data
+      setFinalOrder(updatedData);
+    });
+  };
 
   return (
+    <NoSsr>
     <BaseCard title="View Orders">
       <Table
         aria-label="simple table"
@@ -81,6 +95,11 @@ const allOrder = ({ data }) => {
                 Status
               </Typography>
             </TableCell>
+            <TableCell align="center">
+              <Typography color="textSecondary" variant="h6">
+                Action
+              </Typography>
+            </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -115,7 +134,8 @@ const allOrder = ({ data }) => {
                           {order.userName}
                         </Typography>
                         {order.products.map((product) => (
-                          <Typography key={product.productid} 
+                          <Typography
+                            key={product.productid}
                             color="textSecondary"
                             sx={{
                               fontSize: "13px",
@@ -154,12 +174,23 @@ const allOrder = ({ data }) => {
                       sx={{
                         pl: "4px",
                         pr: "4px",
-                        backgroundColor: "#e53935",
+                        backgroundColor:
+                          order.status === "pending" ? "#e53935" : "#4CAF50",
                         color: "#fff",
                       }}
                       size="small"
                       label={order.status}
                     ></Chip>
+                  </TableCell>
+                  <TableCell align="right">
+                    <button
+              
+                        onClick={() => handleReadyToShipClick(order._id)}
+                        className="bg-orange-500 mx-2 hover:bg-orange-900 text-black font-bold py-2 px-4 rounded-full cursor-pointer"
+                    >
+                        Ready To Ship
+                     
+                    </button>
                   </TableCell>
                 </TableRow>
               </>
@@ -168,6 +199,7 @@ const allOrder = ({ data }) => {
         </TableBody>
       </Table>
     </BaseCard>
+    </NoSsr>
   );
 };
 

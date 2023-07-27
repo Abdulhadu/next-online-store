@@ -2,9 +2,9 @@ import React from "react";
 import { BsFilePlus } from "react-icons/bs";
 import { BsFileMinus } from "react-icons/bs";
 import { ToastContainer, toast } from "react-toastify";
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import OrderConfirmationModal from "./OrderConfirmationModal";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
 
 const checkout = ({ cart, addtoCart, clearCart, removeQty, subTotal }) => {
   const [form, setform] = useState({
@@ -17,7 +17,7 @@ const checkout = ({ cart, addtoCart, clearCart, removeQty, subTotal }) => {
     country: "Pakistan",
     province: "",
     postalCode: "",
-    phoneNo: ""
+    phoneNo: "",
   });
   const [showConfirmationModal, setShowConfirmationModal] = useState(false);
 
@@ -42,7 +42,8 @@ const checkout = ({ cart, addtoCart, clearCart, removeQty, subTotal }) => {
       country,
       province,
       postalCode,
-      phoneNo
+      phoneNo,
+      paymentMethod,
     } = form;
 
     // Prepare the data object to send to the API
@@ -51,24 +52,28 @@ const checkout = ({ cart, addtoCart, clearCart, removeQty, subTotal }) => {
       username: `${firstName}, ${lastName}`,
       address: `${address}, ${apartment}, ${city}, ${country}, ${province}, ${postalCode}`,
       phoneNo,
-      cart, // Include the cart data in the request
+      cart,
+      paymentMethod,
     };
-console.log("data is : ",data);
+    console.log("data is : ", data);
     try {
       // Make an API call to submit the form data
-      const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/orders`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_HOST}/api/orders`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (response.ok) {
         // API call successful
         toast.success("Order placed successfully!");
         clearCart(); // Clear the cart after successful submission
-        setShowConfirmationModal(true); 
+        setShowConfirmationModal(true);
       } else {
         // API call failed
         toast.error("Failed to submit the order. Please try again.");
@@ -88,7 +93,6 @@ console.log("data is : ",data);
     }
   }, [showConfirmationModal]);
 
-
   useEffect(() => {
     // Show info toast message after the component is mounted
     toast.info("Please Proceed to Checkout", {
@@ -100,7 +104,7 @@ console.log("data is : ",data);
       draggable: true,
       progress: undefined,
     });
-  }, []); 
+  }, []);
   return (
     <div>
       <ToastContainer
@@ -115,8 +119,6 @@ console.log("data is : ",data);
         pauseOnHover
       />
 
-
-
       <div className="bg-gray-50">
         <h1 className="mx-auto text-center font-bold text-3xl py-5">
           Checkout
@@ -124,7 +126,8 @@ console.log("data is : ",data);
 
         <main className="max-w-7xl mx-auto pt-16 pb-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-2xl mx-auto lg:max-w-none">
-            <form onSubmit={Submit}
+            <form
+              onSubmit={Submit}
               className="lg:grid lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16"
             >
               <div>
@@ -327,125 +330,63 @@ console.log("data is : ",data);
                     <div className="space-y-4 sm:flex sm:items-center sm:space-y-0 sm:space-x-10">
                       <div className="flex items-center">
                         <input
-                          id="credit-card"
-                          name="payment-type"
                           type="radio"
-                          checked
-                          className="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 sm:text-base py-1 px-1"
+                          id="cashOnDelivery"
+                          name="paymentMethod"
+                          value="cashOnDelivery"
+                          checked={form.paymentMethod === "cashOnDelivery"}
+                          onChange={handleInputChange}
+                          defaultChecked
+                     
+                          className="sm rounded-full bg-blue-600 hover:bg-blue-500 focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 sm:text-base py-1 px-1"
                         />
                         <label
-                          htmlFor="credit-card"
+                          htmlFor="cashOnDelivery"
                           className="ml-3 block text-md font-medium text-gray-700"
                         >
-                          Credit card
+                          Cash On Delivery
                         </label>
                       </div>
 
                       <div className="flex items-center">
                         <input
-                          id="paypal"
-                          name="payment-type"
                           type="radio"
+                          id="bankPayment"
+                          name="paymentMethod"
+                          value="bankPayment"
+                          checked={form.paymentMethod === "bankPayment"}
+                          onChange={handleInputChange}
                           className="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 sm:text-base py-1 px-1"
                         />
                         <label
-                          htmlFor="paypal"
+                          htmlFor="bankPayment"
                           className="ml-3 block text-md font-medium text-gray-700"
                         >
-                          PayPal
-                        </label>
-                      </div>
-
-                      <div className="flex items-center">
-                        <input
-                          id="etransfer"
-                          name="payment-type"
-                          type="radio"
-                          className="focus:ring-purple-500 h-4 w-4 text-purple-600 border-gray-300 sm:text-base py-1 px-1"
-                        />
-                        <label
-                          htmlFor="etransfer"
-                          className="ml-3 block text-md font-medium text-gray-700"
-                        >
-                          eTransfer
+                          Bank Payment
                         </label>
                       </div>
                     </div>
                   </fieldset>
 
-                  <div className="mt-6 grid grid-cols-4 gap-y-6 gap-x-4">
-                    <div className="col-span-4">
-                      <label
-                        htmlFor="card-number"
-                        className="block text-md font-medium text-gray-700"
-                      >
-                        Card number
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          id="card-number"
-                          name="card-number"
-                          autoComplete="cc-number"
-                          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-base py-1 px-1"
-                        />
-                      </div>
+                  {form.paymentMethod === "cashOnDelivery" && (
+                    <div className="shadow-lg rounded-lg m-4 p-2 sm:px-4 bg-pink-100 sm:text-lg">
+                     
+                      <p>Payment will be made in cash upon delivery.</p>
                     </div>
+                  )}
 
-                    <div className="col-span-4">
-                      <label
-                        htmlFor="name-on-card"
-                        className="block text-md font-medium text-gray-700"
-                      >
-                        Name on card
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          id="name-on-card"
-                          name="name-on-card"
-                          autoComplete="cc-name"
-                          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-base py-1 px-1"
-                        />
-                      </div>
+                  {form.paymentMethod === "bankPayment" && (
+                    <div className="shadow-lg rounded-lg m-4 p-2 sm:px-4 bg-pink-100 sm:text-lg">
+                      
+                      <p>
+                        Please make the payment to the following bank account:
+                      </p>
+                    <br></br>
+                      <p>Bank Name: UBL Bank</p>
+                      <p>Account Number: 123456789</p>
+                      <p>Routing Number: 987654321</p>
                     </div>
-
-                    <div className="col-span-3">
-                      <label
-                        htmlFor="expiration-date"
-                        className="block text-md font-medium text-gray-700"
-                      >
-                        Expiration date (MM/YY)
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="expiration-date"
-                          id="expiration-date"
-                          autoComplete="cc-exp"
-                          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-base py-1 px-1"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="cvc"
-                        className="block text-md font-medium text-gray-700"
-                      >
-                        CVC
-                      </label>
-                      <div className="mt-1">
-                        <input
-                          type="text"
-                          name="cvc"
-                          id="cvc"
-                          autoComplete="csc"
-                          className="block w-full border-gray-300 rounded-md shadow-sm focus:ring-purple-500 focus:border-purple-500 sm:text-base py-1 px-1"
-                        />
-                      </div>
-                    </div>
-                  </div>
+                  )}
                 </div>
               </div>
 
@@ -595,7 +536,9 @@ console.log("data is : ",data);
         </main>
       </div>
       {showConfirmationModal && (
-        <OrderConfirmationModal onClose={() => setShowConfirmationModal(false)} />
+        <OrderConfirmationModal
+          onClose={() => setShowConfirmationModal(false)}
+        />
       )}
     </div>
   );
