@@ -49,9 +49,10 @@ For detailed instructions on how to run and configure the application, please re
 
 ## Screenshots
 ### Admin Dashboard
-![Store Screenshot](public/Website%20SS/Website-adminSS%20(6).png)
+![Store Screenshot](public/Website%20SS/Website-admin%20%286%29.png)
 ### List Of Products
-![Store Screenshot](public/Website%20SS/Website-adminSS%20(1).png)
+![Store Screenshot](public/Website%20SS/Website-admin%20%281%29.png)
+
 
 
 ## Contributing
